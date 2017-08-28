@@ -93,7 +93,8 @@ const Netdisks = {
     options: {
       token: null,
       description: 'Sync Bookmarks Plus',
-      id: null
+      id: null,
+      limit: null
     },
     set(opts = {}) {
       Object.assign(this.options, opts)
@@ -123,8 +124,7 @@ const Netdisks = {
       let data = {
         description: this.options.description,
         public: false,
-        files: bookmarks,
-        limit: null
+        files: bookmarks
       }
       let url = 'https://api.github.com/gists'
       let id = this.options.id
