@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "applications": {
+      "gecko": {
+        "strict_min_version": "57.0"
+      }
+    },
+    "name": "Bookmark Sync Plus",
+    "version": "1.0",
+    "browser_action": {
+      "default_icon": "bookmark.svg",
+      "default_title": "Bookmark Sync Plus",
+      "size": 64
+    },
+    "background": {
+      "scripts": ["dist/background-script.js"]
+    },
+    "permissions": [
+      "bookmark"
+    ],
+    "content_scripts": [
+      {
+        "matches" : ["<all_urls>"],
+        "js": ["dist/content.js"],
+        "match_about_blank": true
+      }
+    ]
+  }
+  
