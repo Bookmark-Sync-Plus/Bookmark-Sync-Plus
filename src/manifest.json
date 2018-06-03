@@ -7,6 +7,8 @@
     },
     "name": "Bookmark Sync Plus",
     "version": "1.0",
+    "description": "Sync bookmarks among platforms/browsers.",
+    "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/bookmark-it",
     "browser_action": {
       "default_icon": "bookmark.svg",
       "default_title": "Bookmark Sync Plus",
@@ -18,13 +20,6 @@
     },
     "permissions": [
       "bookmarks"
-    ],
-    "content_scripts": [
-      {
-        "matches" : ["<all_urls>"],
-        "js": ["netdisks.js"],
-        "match_about_blank": true
-      }
     ]
   }
   
