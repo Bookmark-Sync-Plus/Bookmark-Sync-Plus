@@ -2,9 +2,10 @@
 
 Sync bookmarks among browsers/platforms.
 
-## Implementation
+### On Firefox
 
-:confused: Given GitHub OAuth token, we could read/write gist.  
-:wink: Use that gist as a user's own private cloud bookmark storage.  
-:smile: Chrome/Firefox Mobile could sync bookmarks with account logged in.  
-:flushed: How to do that on Safari?
+This extension will ignore `tags` during sync.
+
+### Edge & Safari
+
+No way to implement yet as necessary APIs missed.
