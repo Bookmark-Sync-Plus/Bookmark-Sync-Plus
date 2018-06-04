@@ -1,30 +1,35 @@
 {
-    "manifest_version": 2,
-    "applications": {
-      "gecko": {
-        "id": "boomarksyncplus@tg",
-        "strict_min_version": "57.0"
-      }
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "boomarksyncplus@tg",
+      "strict_min_version": "57.0"
+    }
+  },
+  "name": "Bookmark Sync Plus",
+  "version": "1.0",
+  "description": "Sync bookmarks among platforms/browsers.",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/bookmark-it",
+  "browser_action": {
+    "default_icon": {
+      "128": "icons/bookmark_128.png"
     },
-    "name": "Bookmark Sync Plus",
-    "version": "1.0",
-    "description": "Sync bookmarks among platforms/browsers.",
-    "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/bookmark-it",
-    "browser_action": {
-      "default_icon": "bookmark.svg",
-      "default_title": "Bookmark Sync Plus",
-      "options_ui": {
-        "page": "options.html",
-        "open_in_tab": true
-      }
-    },
-    "background": {
-      "scripts": ["main.js"]
-    },
-    "permissions": [
-      "bookmarks",
-      "storage",
-      "tabs"
-    ]
-  }
-  
+    "default_title": "Bookmark Sync Plus"
+  },
+  "icons": {
+    "16": "icons/bookmark_16.png",
+    "64": "icons/bookmark_64.png",
+    "128": "icons/bookmark_128.png"
+   },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "scripts": ["main.js"]
+  },
+  "permissions": [
+    "bookmarks",
+    "tabs"
+  ]
+}
