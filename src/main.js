@@ -1,9 +1,60 @@
 //compatibility hack
-var browser = chrome || browser;
-//set badge title text
-browser.browserAction.setTitle({
-    title: 'Last sync time: ' + 'Never'
-});
+const g = chrome || browser;
+
+async function reset() {
+    await g.storage.local.clear()
+}
+
+async function setUser(user) {
+    console.log(`set user => ${user}`)
+    await browser.storage.local.set({ user })
+}
+
+/**
+ * Get user from storage
+ * 
+ * @returns {object}
+ */
+async function getUser() {
+    return (await browser.storage.local.get('user'))['user']
+}
+
+async function setBookmarks(bookmarks) {
+    await browser.storage.local.set({
+        bookmarks
+    })
+}
+
+/**
+ * Get all bookmarks
+ * 
+ * @returns {array}
+ */
+async function getBookmarks() {
+    return (await browser.storage.local.get('bookmarks')).bookmarks
+}
+
+async function addBookmark(value) {
+    const marks = await getBookmarks()
+
+    await setBookmarks(
+        [value, ...(Array.isArray(marks) ? marks :[])]
+    )
+} 
+
+async function removeBookmark(id) {
+    await setBookmarks(
+        (await getBookmarks()).filter(item => item.id !== id)
+    )
+}
+
+async function resetBookmark() {
+    await this.setBookmarks([])
+}
+
+addBookmark({id: 123, value: 'test'})
+    .then(() => getBookmarks())
+    .then(marks => console.log(marks))
 
 function listener() {}
 
@@ -15,18 +66,18 @@ function openURL(url) {
 }
 
 chrome.runtime.onInstalled.addListener(function () {
-    browser.runtime.openOptionsPage();
+    g.runtime.openOptionsPage();
 });
 
-function IntervalSync() {
+// function IntervalSync() {
 
- }
- setInterval(IntervalSync, 60000);
+//  }
+//  setInterval(IntervalSync, 60000);
 
- var syncdate = new Date();
+//  var syncdate = new Date();
 
 function handleClick() {
-    browser.runtime.openOptionsPage();
+    g.runtime.openOptionsPage();
 }
 
 function handleCreated(id, bookmarkInfo) {
@@ -45,16 +96,17 @@ function handleRemoved(id, bookmarkInfo) {
 
 
 //notification
-var notifititle = browser.i18n.getMessage("notificationSyncErrorTitle");
-browser.notifications.create({
+var notifititle = g.i18n.getMessage("notificationSyncErrorTitle");
+g.notifications.create({
   "type": "basic",
-  "iconUrl": browser.extension.getURL("icons/bookmark_128.png"),
+  "iconUrl": g.extension.getURL("icons/bookmark_128.png"),
   "title": notifititle
 });
 
-browser.browserAction.onClicked.addListener(handleClick);
+g.browserAction.onClicked.addListener(handleClick);
 
+console.log("hi")
 // listen for bookmarks
-browser.bookmarks.onChanged.addListener(listener);
-browser.bookmarks.onCreated.addListener(handleCreated);
-browser.bookmarks.onRemoved.addListener(handleRemoved);
+g.bookmarks.onChanged.addListener(listener);
+g.bookmarks.onCreated.addListener(handleCreated);
+g.bookmarks.onRemoved.addListener(handleRemoved);
