@@ -13,13 +13,18 @@
     "browser_action": {
       "default_icon": "bookmark.svg",
       "default_title": "Bookmark Sync Plus",
-      "default_popup": "option.html"
+      "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+      }
     },
     "background": {
       "scripts": ["main.js"]
     },
     "permissions": [
-      "bookmarks"
+      "bookmarks",
+      "storage",
+      "tabs"
     ]
   }
   
