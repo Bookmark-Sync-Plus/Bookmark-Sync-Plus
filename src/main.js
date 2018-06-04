@@ -8,6 +8,7 @@ browser.browserAction.setTitle({
 };
 var t1 = new synctime(second, minute, hour, day, month, year);*/
 function listener() {}
+
 //option page
 function openURL(url) {
     chrome.tabs.create({
@@ -23,6 +24,9 @@ function handleClick() {
     browser.runtime.openOptionsPage();
 }
 
+//initial backup
+
+
 browser.browserAction.onClicked.addListener(handleClick);
 //OAuth
 
@@ -30,7 +34,6 @@ browser.browserAction.onClicked.addListener(handleClick);
 browser.bookmarks.onChanged.addListener(listener);
 
 // listen for bookmarks being created
-browser.bookmarks.onCreated.addListener(listener);
 
 function handleCreated(id, bookmarkInfo) {
     console.log(`New bookmark ID: ${id}`);
@@ -40,7 +43,6 @@ function handleCreated(id, bookmarkInfo) {
 browser.bookmarks.onCreated.addListener(handleCreated);
 
 // listen for bookmarks being removed
-browser.bookmarks.onRemoved.addListener(listener);
 
 function handleRemoved(id, bookmarkInfo) {
     console.log(`New bookmark ID: ${id}`);

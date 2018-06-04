@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "applications": {
     "gecko": {
+      "id": "bookmarksyncplus@tg",
       "strict_min_version": "57.0"
     }
   },
@@ -29,6 +30,7 @@
   },
   "permissions": [
     "bookmarks",
-    "tabs"
+    "tabs",
+    "notifications"
   ]
 }

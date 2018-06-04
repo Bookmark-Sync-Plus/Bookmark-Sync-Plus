@@ -1,0 +1,16 @@
+{
+    "extensionName": {
+      "message": "Bookmark Sync Plus",
+      "description": "Name of the extension."
+    },
+  
+    "extensionDescription": {
+      "message": "Sync bookmarks among platforms/browsers.",
+      "description": "Description of the extension."
+    },
+  
+    "notificationSyncErrorTitle": {
+      "message": "Sync Error",
+      "description": "Title of the sync error  notification."
+    }
+  }
