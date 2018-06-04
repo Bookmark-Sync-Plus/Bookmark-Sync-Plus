@@ -24,37 +24,36 @@ function handleClick() {
     browser.runtime.openOptionsPage();
 }
 
-//initial backup
-
-
-browser.browserAction.onClicked.addListener(handleClick);
-//OAuth
-
-// listen for bookmarks being updated
-browser.bookmarks.onChanged.addListener(listener);
-
-// listen for bookmarks being created
-
 function handleCreated(id, bookmarkInfo) {
     console.log(`New bookmark ID: ${id}`);
     console.log(`New bookmark URL: ${bookmarkInfo.url}`);
     console.log(`New bookmark URL: ${bookmarkInfo.title}`);
 }
-browser.bookmarks.onCreated.addListener(handleCreated);
-
-// listen for bookmarks being removed
 
 function handleRemoved(id, bookmarkInfo) {
     console.log(`New bookmark ID: ${id}`);
     console.log(`New bookmark URL: ${bookmarkInfo.url}`);
     console.log(`New bookmark URL: ${bookmarkInfo.title}`);
 }
-browser.bookmarks.onRemoved.addListener(handleRemoved);
 
-//get bookmark properties
-/*function handleChanged(id, changeInfo) {
-    console.log("Item: " + id + " changed");
-    console.log("Title: " + changeInfo.title);
-    console.log("Url: " + changeInfo.url);
-}
-*/
+//initial backup
+
+
+//notification
+var notifititle = browser.i18n.getMessage("notificationSyncErrorTitle");
+browser.notifications.create({
+  "type": "basic",
+  "iconUrl": browser.extension.getURL("icons/bookmark_64.png"),
+  "title": notifititle
+});
+
+browser.browserAction.onClicked.addListener(handleClick);
+
+// listen for bookmarks being updated
+browser.bookmarks.onChanged.addListener(listener);
+
+// listen for bookmarks being created
+browser.bookmarks.onCreated.addListener(handleCreated);
+
+// listen for bookmarks being removed
+browser.bookmarks.onRemoved.addListener(handleRemoved);
