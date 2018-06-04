@@ -1,11 +1,18 @@
-# Bookmark-Sync-Plus
+## Bookmark-Sync-Plus
 
 Sync bookmarks among browsers/platforms.
 
-### On Firefox
+### Supported browsers
 
-This extension will ignore `tags` during sync.
+- Firefox : this extension will ignore `tags` during sync.
+- Chrome
+- Opera
 
-### Edge & Safari
+### Unsupported browsers
 
-No way to implement yet as necessary APIs missed.
+- Edge
+- Safari
+- IE
+- QQ
+- UC
+- 360

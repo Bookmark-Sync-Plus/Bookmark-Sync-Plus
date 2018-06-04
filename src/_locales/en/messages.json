@@ -11,6 +11,6 @@
   
     "notificationSyncErrorTitle": {
       "message": "Sync Error",
-      "description": "Title of the sync error  notification."
+      "description": "Title of the sync error notification."
     }
   }

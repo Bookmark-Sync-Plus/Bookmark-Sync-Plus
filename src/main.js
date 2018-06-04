@@ -4,9 +4,7 @@ var browser = chrome || browser;
 browser.browserAction.setTitle({
     title: 'Last sync time: ' + 'Never'
 });
-/*function synctime (second, minute, hour, day, month, year) {
-};
-var t1 = new synctime(second, minute, hour, day, month, year);*/
+
 function listener() {}
 
 //option page
@@ -19,6 +17,13 @@ function openURL(url) {
 chrome.runtime.onInstalled.addListener(function () {
     browser.runtime.openOptionsPage();
 });
+
+function IntervalSync() {
+
+ }
+ setInterval(IntervalSync, 60000);
+
+ var syncdate = new Date();
 
 function handleClick() {
     browser.runtime.openOptionsPage();
@@ -43,17 +48,13 @@ function handleRemoved(id, bookmarkInfo) {
 var notifititle = browser.i18n.getMessage("notificationSyncErrorTitle");
 browser.notifications.create({
   "type": "basic",
-  "iconUrl": browser.extension.getURL("icons/bookmark_64.png"),
+  "iconUrl": browser.extension.getURL("icons/bookmark_128.png"),
   "title": notifititle
 });
 
 browser.browserAction.onClicked.addListener(handleClick);
 
-// listen for bookmarks being updated
+// listen for bookmarks
 browser.bookmarks.onChanged.addListener(listener);
-
-// listen for bookmarks being created
 browser.bookmarks.onCreated.addListener(handleCreated);
-
-// listen for bookmarks being removed
 browser.bookmarks.onRemoved.addListener(handleRemoved);
